@@ -1,32 +1,32 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-		<title>Javascript Bootcamp</title>
+        <title>Javascript Bootcamp</title>
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/default.css" id="theme">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-		<script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'css/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
-		</script>
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'css/print/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
         <style type="text/css">
             .slides table, .slides tr, .slides td {
                 border: 1px solid black;
@@ -42,192 +42,263 @@
 
         </style>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
 
-	<body>
+    <body>
 
-		<div class="reveal">
+        <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
 
-				<section data-background="#007777">
-					<h2>Welcome to Javascript Bootcamp</h2>
-					<h3>Part One</h3>
-					<p><small>Created by Aaron Brooks / <a href="http://twitter.com/ra_brooks">@ra_brooks</a></small></p>
-					<p> <small>Based on Douglas Crockfords "Functions the Ultimate"</small></p>
-				</section>
+                <section data-background="#007777">
+                    <h2>Welcome to Javascript Bootcamp</h2>
+                    <h3>Part One</h3>
+                    <p><small>Created by Aaron Brooks / <a href="http://twitter.com/ra_brooks">@ra_brooks</a></small></p>
+                    <p> <small>Based on Douglas Crockfords "Functions the Ultimate"</small></p>
+                </section>
 
-				<section data-background="#007777">
-					<h2>Functions the ultimate</h2>
-					<p>In Other languages have methods, classes, constructors or modules</p>
-					<br>
-					<p>Javascript its just functions.</p>
+                <section data-background="#007777">
+                    <h2>Functions the ultimate</h2>
+                    <p>In other languages we have methods, classes, constructors or modules</p>
+                    <br>
+                    <p>Javascript just has functions.</p>
 
-					<aside class="notes">
-						The function in javascript can do all those things and more
-						<br>
-						<ul>
-							<li>Classes</li>
-							<li>Methods</li>
-							<li>Constructors</li>
-							<li>Modules</li>
-						</ul>
-						<br>
-						<p>Because functions are so complex and powerful it is important that we have a solid understanding of Functions</p>
-					</aside>
-				</section>
+                    <aside class="notes">
+                        The function in javascript can do all those things and more
+                        <br>
+                        <ul>
+                            <li>Classes</li>
+                            <li>Methods</li>
+                            <li>Constructors</li>
+                            <li>Modules</li>
+                        </ul>
+                        <br>
+                        <p>Because functions are so complex and powerful it is important that we have a solid understanding of Functions</p>
+                    </aside>
+                </section>
 
-				<section data-background="#007777">
-					<h2>Function Expression</h2>
-					<ul>
-						<li>Produces an instance of a function object</li>
-						<li>These function objects are first class</li>
-						<li>Function objects inhert from Function.prototype</li>
-					</ul>
+                <section data-background="#007777">
+                    <h2>Function Expression</h2>
+                    <ul>
+                        <li>Produces an instance of a function object</li>
+                        <li>These function objects are first class</li>
+                        <li>Function objects inhert from Function.prototype</li>
+                    </ul>
 
-					<aside class="notes">
-						<p>Two important things on this slide Function expression are different from function statments</p>
-						<p>Functions are object, and these objects are first class citizens in javascript land</p>
-						<p>Does everyone know what first class means?</p>
-						<p>You can pass them as arguments, return them from functions, assign them to variables, store in an array or hash ( which is a javascript object )</p>
-						<p>In javascript functions have methods and these methods can be inherited via Function.prototype</p>
-					</aside>
-				</section>
-
-
-				<section data-background="#007777">
-					<h2>var statment</h2>
-					<ul>
-						<li>Declares and initializes variables within a function</li>
-						<li>A variable declared anywhere within a function is visible everywhere within the function</li>
-						<li>No block scope in javascript</li>
-					</ul>
-
-					<aside class="notes">
-					<p>The way javascript handles variables is unique, the var statment is treated as two parts</p>
-					<p>First the declaration of the var gets hoisted to the top of the function and set to undefined</p>
-					<p>Second the initiliztion becomes an assignment</p>
-					</aside>
-				</section>
+                    <aside class="notes">
+                        <p>Two important things on this slide Function expression are different from function statments</p>
+                        <p>Functions are object, and these objects are first class citizens in javascript land</p>
+                        <p>Does everyone know what first class means?</p>
+                        <p>You can pass them as arguments, return them from functions, assign them to variables, store in an array or hash ( which is a javascript object )</p>
+                        <p>In javascript functions have methods and these methods can be inherited via Function.prototype</p>
+                    </aside>
+                </section>
 
 
-				<section data-background="#007777">
-					<h2>var statment Example</h2>
-				
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+                <section data-background="#007777">
+                    <h2>var statment</h2>
+                    <ul>
+                        <li>Declares and initializes variables within a function</li>
+                        <li>A variable declared anywhere within a function is visible everywhere within the function</li>
+                        <li>No block scope in javascript</li>
+                    </ul>
+
+                    <aside class="notes">
+                    <p>The way javascript handles variables is unique, the var statment is treated as two parts</p>
+                    <p>First the declaration of the var gets hoisted to the top of the function and set to undefined</p>
+                    <p>Second the initiliztion becomes an assignment</p>
+                    </aside>
+                </section>
+
+
+                <section data-background="#007777">
+                    <h2>var statment Example</h2>
+                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 var myVar = 0, myOtherVar;
 //Expands into 
     var myVar = undefined,
         myOtherVar = undefined;
 
-    myVar = 0;						
-    				</code></pre>
-					<aside class="notes">
-						<p>This is important to understand, most of the confussion around javascript is because of hoisting</p>
+    myVar = 0;                      
+                    </code></pre>
+                    <aside class="notes">
+                        <p>This is important to understand, most of the confussion around javascript is because of hoisting</p>
 
-					</aside>
-				</section>
+                    </aside>
+                </section>
 
 
-				<section data-background="#007777">
-					<h2>Function Statment</h2>
-					<p>If the first token function, then it is a function statment</p>
-			
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+                <section data-background="#007777">
+                    <h2>Function Statment</h2>
+                    <p>If the first token is function, then it is a function declaration, AKA function statment</p>
+            
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 function foo() {
-	
+    
 };
-					</code></pre>
-					Function Expression:
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+                    </code></pre>
+                    Function Expression:
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 var foo = function() {
-	// function expression
+    // function expression
 }
-					</code></pre>
-					
-					<aside class="notes">
-					<p>Function statments and function expressions are very similar,  but the difference lies in how the browser loads them.</p>
-					
-					<p>Like Variable hosting function statments get hoisted as well, making them behave differently than expected</p>
-					<p>We usually use function expression because they are easier to reason about. For example you cannont use Function statments in if blocks, because they get hoisted to the top of the function</p>
-	
-					<p>Now most browser will support this, but since the language definition does't they all support it differntly </p>
+                    </code></pre>
+                    
+                    <aside class="notes">
+                    <p>Function statments and function expressions are very similar,  but the difference lies in how the browser loads them.</p>
+                    
+                    <p>Like Variable hosting function statments get hoisted as well, making them behave differently than expected</p>
+                    <p>We usually use function expression because they are easier to reason about. For example you cannont use Function statments in if blocks, because they get hoisted to the top of the function</p>
+    
+                    <p>Now most browser will support this, but since the language definition does't they all support it differntly </p>
 
-					</aside>
-				</section>
+                    </aside>
+                </section>
 
 
-				<section data-background="#007777">
-					<h2>Rules To Live By</h2>
-					<ul>
-						<li>Declare all variables at the top of the function.</li>
-						<li>Declare all functions before you call them.</li>
+                <section data-background="#007777">
+                    <h2>Rules To Live By</h2>
+                    <ul>
+                        <li>Declare all variables at the top of the function.</li>
+                        <li>Declare all functions before you call them.</li>
 
-					</ul>
-					<br><br>
-						<p>The language provides mechanisms that allow you to ignore this advice, but they are problematic.</p>
-					<aside class="notes">
-						<p>Unlike other C syntax languages that have block scope, you should declare all variables at the top of the function</p>
-					</aside>
-				</section>
+                    </ul>
+                    <br><br>
+                        <p>The language provides mechanisms that allow you to ignore this advice, but they are problematic.</p>
+                    <aside class="notes">
+                        <p>Unlike other C syntax languages that have block scope, you should declare all variables at the top of the function</p>
+                    </aside>
+                </section>
 
-				<section data-background="#007777">
-					<h2>Return Statments</h2>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+
+                <section data-background="#007777">
+                    <h2>Don't make functions in a Loop</h2>
+                    <ul>
+                        <li>It can be wasteful because a new function object is created on every iteration.</li>
+                        <li>It can be confusing because the new function closes over the loop’s variables, not over their current values.</li>
+                    </ul>
+                    <aside class="notes">
+                        <p></p>
+                    </aside>
+                </section>
+
+                <section data-background="#007777">
+                    <h2>Functions in Loops</h2>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+// THIS IS WRONG
+
+var my_func, i, list;
+for (i = 0; i < list.length; i+= 1) {
+    my_func = function (i) {
+        console.log(i);
+    };
+    my_func(i);
+}
+
+                    </code></pre>
+                    <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+// RIGHT
+
+var my_func, i, list;
+
+my_func = function (i) {
+    console.log(i);
+};
+
+for (i = 0; i < list.length; i+= 1) {
+    my_func(i);
+}
+
+                    </code></pre>
+                    <aside class="notes">
+                        <p></p>
+                    </aside>
+                </section>
+
+                <section data-background="#007777">
+                    <h2>Functions in Loops</h2>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+// Example Using .each from JQuery
+
+$( "li" ).each(function( index ) {
+    alert( index + ": " + $(this).text() );
+});
+
+                    </code></pre>
+                    <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+// RIGHT
+
+var fnOutside = function(index) {
+    alert( index + ": " + $(this).text() );
+};
+$( "li" ).each(fnOutside);
+
+                    </code></pre>
+                    <aside class="notes">
+                        <p>This example is using Jquery, but I will also apply to the YUI each method</p>
+                    </aside>
+                </section>
+
+                <section data-background="#007777">
+                    <h2>Return Statments</h2>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 return foo;
 //or 
 return;
-					</code></pre>
-					<br>
-					<ul>
-						<li>If there is no expression, then the return value is undefined. </li>
-						<li>Except for constructors, whose default return value is <em>this</em>.</li>
+                    </code></pre>
+                    <br>
+                    <ul>
+                        <li>If there is no expression, then the return value is undefined. </li>
+                        <li>Except for constructors, whose default return value is <em>this</em>.</li>
 
-					</ul>
-					<aside class="notes">
-						<p>Unlike other C syntax languages that have block scope, you should declare all variables at the top of the function</p>
-					</aside>
-				</section>
+                    </ul>
+                    <aside class="notes">
+                        <p>Unlike other C syntax languages that have block scope, you should declare all variables at the top of the function</p>
+                    </aside>
+                </section>
 
-				<section data-background="#007777">
-					<h2>Functions pseudo parameters</h2>
-					<br>
-					<ul>
-						<li>Arguments</li>
-						<li>this</li>
+                <section data-background="#007777">
+                    <h2>Functions pseudo parameters</h2>
+                    <br>
+                    <ul>
+                        <li>Arguments</li>
+                        <li>this</li>
 
-					</ul>
-					
-					<aside class="notes">
+                    </ul>
+                    
+                    <aside class="notes">
 
-					</aside>
-				</section>
+                    </aside>
+                </section>
 
-				<section data-background="#007777">
-					<h2>Arguments</h2>
-					<br>
-					<ul>
-						<li>When a function is invoked, in addition to its parameters, it also gets a special parameter called arguments.</li>
-						<li>It contains all of the arguments from the invocation.</li>
-						<li>It is an array-like object. </li>
-						<li>Arguments.length is the number of arguments passed.</li>
-						<li>Rule of thumb treat this as a read only structure</li>
+                <section data-background="#007777">
+                    <h2>Arguments</h2>
+                    <br>
+                    <ul>
+                        <li>When a function is invoked, in addition to its parameters, it also gets a special parameter called arguments.</li>
+                        <li>It contains all of the arguments from the invocation.</li>
+                        <li>It is an array-like object. </li>
+                        <li>Arguments.length is the number of arguments passed.</li>
+                        <li>Rule of thumb treat this as a read only structure</li>
 
-					</ul>
-					
-					<aside class="notes">
+                    </ul>
+                    
+                    <aside class="notes">
 
-					</aside>
-				</section>
+                    </aside>
+                </section>
 
-				<section data-background="#007777">
-					<h2>Arguments Example</h2>
-					<br>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+                <section data-background="#007777">
+                    <h2>Arguments Example</h2>
+                    <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 function sum() {
     var i,
         n = arguments.length,
@@ -239,41 +310,41 @@ function sum() {
 }
 
 var ten = sum(1, 2, 3, 4); 
-					</code></pre>
-					
-					<aside class="notes">
+                    </code></pre>
+                    
+                    <aside class="notes">
 
-					</aside>
-				</section>
+                    </aside>
+                </section>
 
-				<section data-background="#007777">
-					<h2>this</h2>
-						<ul>
-							<li>The this parameter contains a reference to the object of invocation.</li>
-							<li>this allows a method to know what object it is concerned with.</li>
-							<li>this allows a single function object to service many objects.</li>
-							<li>this is key to prototypal inheritance.</li>
-						</ul>
+                <section data-background="#007777">
+                    <h2>this</h2>
+                        <ul>
+                            <li>The this parameter contains a reference to the object of invocation.</li>
+                            <li>this allows a method to know what object it is concerned with.</li>
+                            <li>this allows a single function object to service many objects.</li>
+                            <li>this is key to prototypal inheritance.</li>
+                        </ul>
 
-					<aside class="notes">
-						<p>If the this parameter does not make sense right now, it will once we start working with methods and inheritance</p>
-					</aside>
-				</section>
+                    <aside class="notes">
+                        <p>If the this parameter does not make sense right now, it will once we start working with methods and inheritance</p>
+                    </aside>
+                </section>
 
-				<section data-background="#007777">
-					<h2>Invoking Functions</h2>
-						<p>Javascript functions can be invoked in four different ways</p>
-						<ul>
-							<li>functions</li>
-							<li>methods</li>
-							<li>constructors</li>
-							<li>indirectly using call() or apply() methods on the function</li>
-						</ul>
+                <section data-background="#007777">
+                    <h2>Invoking Functions</h2>
+                        <p>Javascript functions can be invoked in four different ways</p>
+                        <ul>
+                            <li>functions</li>
+                            <li>methods</li>
+                            <li>constructors</li>
+                            <li>indirectly using call() or apply() methods on the function</li>
+                        </ul>
 
-					<aside class="notes">
-						<p>The way we call functions, will determine what happens to the this parameter</p>
-					</aside>
-				</section>
+                    <aside class="notes">
+                        <p>The way we call functions, will determine what happens to the this parameter</p>
+                    </aside>
+                </section>
 
                 <section data-background="#007777">
                     <h2>Function Invocation</h2>
@@ -286,15 +357,21 @@ function logProps(prop) {
 var foo = "bar"
 
 logProps(foo);
-//Function Invocation with and object
-logProps({x:1});
-
                     
+                    </code></pre>
+                    <br>
+                    <p> Here we call logProps() and pass it an object</p>
+
+                    <pre><code data-trim contenteditable>
+function logProps(prop) {
+    console.log(prop)
+}
+
+logProps({x:1});
                     </code></pre>
 
                     <aside class="notes">
-                        <p>When a function is called in the function form, this is set to the global object.
-                           That is not very useful. </p>
+                        <p></p>
                         
                     </aside>
                     
@@ -322,11 +399,10 @@ function foo() {
                     </section>
 
 
-				<section data-background="#007777">
-					<h2>Method Invocation</h2>
-						<p>A method is nothing more than a javascript function that is stored in a 
-                           property of an object. </p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+                <section data-background="#007777">
+                    <h2>Method Invocation</h2>
+                        <p>A method is nothing more than a javascript function that is stored in a property of an object. </p>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 Var Foo = {
   bar: function() {
     var self = this;
@@ -334,8 +410,8 @@ Var Foo = {
     f();
 
     function f() {
-    	// now this is undefined or global depending on the EcmaScript Version
-    	console.log( self === Foo);
+        // now this is undefined or global depending on the EcmaScript Version
+        console.log( self === Foo);
     }
   },
   baz: function() {
@@ -344,13 +420,13 @@ Var Foo = {
 }
 
 Foo.bar();
-					
-					</code></pre>
+                    
+                    </code></pre>
 
-					<aside class="notes">
-						<p>The way we call functions, will determine what happens to the this parameter</p>
-					</aside>
-				</section>
+                    <aside class="notes">
+                        <p>The way we call functions, will determine what happens to the this parameter</p>
+                    </aside>
+                </section>
 
 
                 <section data-background="#007777">
@@ -434,13 +510,14 @@ bar.apply(foo, [1,2]);
 
                 <section data-background="#007777">
                     <h2>Recursion</h2>
-                        <p>When a function calls itself</p>
+                        <p>When a function can be defined in terms of its self</p>
+                        <small><em>When A Function Calls Itself</em></small>
                     <br>
                     
                     <aside class="notes">
                         <p>This idea came from lisp in 1958</p>
-                        <p>Lisp was the first language to borrow the recursion principle from mathematics
-                           and apply it to programming</p>
+                        <p>Lisp was the first language to borrow the recursion principle from mathematics and apply it to programming</p>
+                        <p>Simple concept but its important to unserstand what is happening.</p>
                     </aside>
                 </section>
 
@@ -459,41 +536,213 @@ bar.apply(foo, [1,2]);
                 </section>
 
 
-			</div>
+                <section data-background="#007777">
+                    <h2>Immediately-Invoked Function Expression (IIFE)</h2>
+                        <p></p>
+                        <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+(function(){
+    console.log('This will run auto magically');
+})();                   
+                    </code></pre>
+                    <br>
+                    <p>Here is an example of a self invoking function</p>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function foo() { foo(); }
+                    </code></pre>
+                    <aside class="notes">
+                        <p>Here we hava a function that will be invoked immediately.</p>
+                        <p>This is not a recursive function, like the self invoking function</p>
+                        <p></p>
+                    </aside>
+                </section>
 
-		</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+                <section data-background="#007777">
+                    <h2>Closure</h2>
+                    <br>
+                        <ul>
+                            <li>Lexical Scoping</li>
+                            <li>Static Scoping</li>
+                        </ul>
+                    
+                    <aside class="notes">
+                        <p>Closures this is sometimes called lexical scoping or static scoping</p>
+                        <p>Closure comes from set theory where one thing can be closed over another thing</p>
+                        <p>This is one of the most powerful features of Javascript and where we will spend most of the day</p>
+                    </aside>
+                </section>
 
-		<script>
+                <section data-background="#007777">
+                    <h2>Closure</h2>
+                    <br>
+                        <ul>
+                            <li>The context of an inner function includes the scope of the outer function.</li>
+                            <li>An inner function enjoys that context even after the parent functions have returned.</li>
+                            
+                        </ul>
+                    
+                    <aside class="notes">
+                        <p>Closures this is sometimes called lexical scoping or static scoping</p>
+                        <p>This is one of the most powerful features of Javascript and where we will spend most of the day</p>
+                    </aside>
+                </section>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+                <section data-background="#007777">
+                    <h2>Global Namespace</h2>
+                        <p></p>
+                        <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var names = ['zero', 'one', 'two',
+'three', 'four', 'five', 'six',
+'seven', 'eight', 'nine'];
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+var digit_name = function (n) {
+    return names[n];    
+};
 
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
+alert(digit_names(3)); 
+                    </code></pre>
+                    <aside class="notes">
+                        <p>The problem with this is that names is in the gloabl namespace</p>
+                    </aside>
+                </section>
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+                <section data-background="#007777">
+                    <h2>Slow Solution</h2>
+                        <p></p>
+                        <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var digit_name = function (n) {
+    var names = ['zero', 'one', 'two',
+    'three', 'four', 'five', 'six',
+    'seven', 'eight', 'nine'];
 
-		</script>
-	</body>
+
+    return names[n];    
+};
+
+alert(digit_names(3)); 
+                    </code></pre>
+                    <aside class="notes">
+                        <p>In this case, everytime we call digit_name() we create an array with ten items in it only to pull one thing out. This is hugely inefficient</p>
+                    </aside>
+                </section>
+
+                <section data-background="#007777">
+                    <h2>MOST IMPORTANT CONCEPT ALL DAY</h2>
+                        <p></p>
+                        <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var digit_name = (function (n) {
+    var names = ['zero', 'one', 'two',
+    'three', 'four', 'five', 'six',
+    'seven', 'eight', 'nine'];
+
+    return function(n){
+        return names[n];
+    };  
+})();
+
+alert(digit_names(3)); 
+                    </code></pre>
+                    <aside class="notes">
+                        <p>Remeber when we said an inner function enjoys the context of the parent function even after the parent function as returned</p>
+
+                        <p>Walk thorugh whats happing here, we set digit_name equal to an IIFE</p>
+                        <p>This IIFE returns a function that when called returns names[n]</p>
+                        <p>Even though the IIFE as returned we can still use the names variable</p>
+
+
+                        <p>This is very importnat to understand, once you get this you understand 80% of javascript</p>
+                    </aside>
+                </section>
+
+                    
+                <section data-background="#007777">
+                    <h2>Immediate function returns a function</h2>
+                        <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var names = ['zero', 'one', 'two',
+'three', 'four', 'five', 'six',
+'seven', 'eight', 'nine'];
+
+var digit_name = (function (n) {
+
+    return function(n){
+        return names[n];
+    };  
+})();
+
+alert(digit_names(3)); 
+                    </code></pre>
+                    <aside class="notes">
+
+                    </aside>
+                </section>
+
+                <section data-background="#007777">
+                    <h2>Closure Example</h2>
+                        <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+
+
+var digit_name = (function (n) {
+    var names = ['zero', 'one', 'two',
+        'three', 'four', 'five', 'six',
+        'seven', 'eight', 'nine'];
+
+    return function(n){
+        return names[n];
+    };
+
+})();
+
+alert(digit_names(3)); 
+                    </code></pre>
+                    <aside class="notes">
+                    <p>Now we just bring the names var into the closure and get the same thing</p>
+                    </aside>
+                </section>
+
+<!-- PICK UP WITH PROTOTYPAL INHERITANCE (A) FROM PLURAL SIGHT -->
+
+
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+    </body>
 </html>
