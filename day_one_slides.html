@@ -58,13 +58,20 @@
                     <h2>Welcome to Javascript Bootcamp</h2>
                     <h3>Part One</h3>
                     <p><small>Created by Aaron Brooks / <a href="http://twitter.com/ra_brooks">@ra_brooks</a></small></p>
+                     <p><small>And Rob Shepherd</small></p>
                     <p> <small>Based on Douglas Crockfords "Functions the Ultimate"</small></p>
                 </section>
 
                 <section data-background="#007777">
                     <h2>Functions the ultimate</h2>
-                    <p>In other languages we have methods, classes, constructors or modules</p>
-                    <br>
+                    <p>In other languages we have: </p>
+                    <ul>
+                        <li>Classes</li>
+                        <li>Methods</li>
+                        <li>Constructors</li>
+                        <li>Modules</li>
+                    </ul>
+                    <br><br>
                     <p>Javascript just has functions.</p>
 
                     <aside class="notes">
@@ -82,25 +89,7 @@
                 </section>
 
                 <section data-background="#007777">
-                    <h2>Function Expression</h2>
-                    <ul>
-                        <li>Produces an instance of a function object</li>
-                        <li>These function objects are first class</li>
-                        <li>Function objects inhert from Function.prototype</li>
-                    </ul>
-
-                    <aside class="notes">
-                        <p>Two important things on this slide Function expression are different from function statments</p>
-                        <p>Functions are object, and these objects are first class citizens in javascript land</p>
-                        <p>Does everyone know what first class means?</p>
-                        <p>You can pass them as arguments, return them from functions, assign them to variables, store in an array or hash ( which is a javascript object )</p>
-                        <p>In javascript functions have methods and these methods can be inherited via Function.prototype</p>
-                    </aside>
-                </section>
-
-
-                <section data-background="#007777">
-                    <h2>var statment</h2>
+                    <h2>var Statement</h2>
                     <ul>
                         <li>Declares and initializes variables within a function</li>
                         <li>A variable declared anywhere within a function is visible everywhere within the function</li>
@@ -108,7 +97,7 @@
                     </ul>
 
                     <aside class="notes">
-                    <p>The way javascript handles variables is unique, the var statment is treated as two parts</p>
+                    <p>The way javascript handles variables is unique, the var Statement is treated as two parts</p>
                     <p>First the declaration of the var gets hoisted to the top of the function and set to undefined</p>
                     <p>Second the initiliztion becomes an assignment</p>
                     </aside>
@@ -116,7 +105,7 @@
 
 
                 <section data-background="#007777">
-                    <h2>var statment Example</h2>
+                    <h2>var Statement Example</h2>
                 
                     <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 var myVar = 0, myOtherVar;
@@ -127,15 +116,31 @@ var myVar = 0, myOtherVar;
     myVar = 0;                      
                     </code></pre>
                     <aside class="notes">
-                        <p>This is important to understand, most of the confussion around javascript is because of hoisting</p>
+                        <p>This is important to understand, alot of the confussion around javascript is because of hoisting</p>
 
                     </aside>
                 </section>
 
+                <section data-background="#007777">
+                    <h2>Function Expression</h2>
+                    <ul>
+                        <li>Produces an instance of a function object</li>
+                        <li>These function objects are first class</li>
+                        <li>Function objects inhert from Function.prototype</li>
+                    </ul>
+
+                    <aside class="notes">
+                        <p>Two important things on this slide Function expression are different from function Statements</p>
+                        <p>Functions are object, and these objects are first class citizens in javascript land</p>
+                        <p>Does everyone know what first class means?</p>
+                        <p>You can pass them as arguments, return them from functions, assign them to variables, store in an array or hash ( which is a javascript object )</p>
+                        <p>In javascript functions have methods and these methods can be inherited via Function.prototype</p>
+                    </aside>
+                </section>
 
                 <section data-background="#007777">
-                    <h2>Function Statment</h2>
-                    <p>If the first token is function, then it is a function declaration, AKA function statment</p>
+                    <h2>Function Statement</h2>
+                    <p>If the first token is function, then it is a function declaration, AKA function Statement</p>
             
                     <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 function foo() {
@@ -150,10 +155,10 @@ var foo = function() {
                     </code></pre>
                     
                     <aside class="notes">
-                    <p>Function statments and function expressions are very similar,  but the difference lies in how the browser loads them.</p>
+                    <p>Function Statements and function expressions are very similar,  but the difference lies in how the browser loads them.</p>
                     
-                    <p>Like Variable hosting function statments get hoisted as well, making them behave differently than expected</p>
-                    <p>We usually use function expression because they are easier to reason about. For example you cannont use Function statments in if blocks, because they get hoisted to the top of the function</p>
+                    <p>Like Variable hosting function Statements get hoisted as well, making them behave differently than expected</p>
+                    <p>We usually use function expression because they are easier to reason about. For example you cannont use Function Statements in if blocks, because they get hoisted to the top of the function</p>
     
                     <p>Now most browser will support this, but since the language definition does't they all support it differntly </p>
 
@@ -177,7 +182,28 @@ var foo = function() {
 
 
                 <section data-background="#007777">
-                    <h2>Don't make functions in a Loop</h2>
+                    <h2>Multiple Variables</h2>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var pbj = function() {
+    var bread,
+        jelly,
+        peanutButter,
+        slices = 2,
+        plate = 1,
+        knife = 1;
+
+    // Make Sandwich
+}
+
+                    </code></pre>
+
+                    <aside class="notes">
+                        <p></p>
+                    </aside>
+                </section>
+
+                <section data-background="#007777">
+                    <h2>Don't create functions in a Loop</h2>
                     <ul>
                         <li>It can be wasteful because a new function object is created on every iteration.</li>
                         <li>It can be confusing because the new function closes over the loop’s variables, not over their current values.</li>
@@ -192,7 +218,8 @@ var foo = function() {
                     <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 // THIS IS WRONG
 
-var my_func, i, list;
+var my_func, i,list;
+
 for (i = 0; i < list.length; i+= 1) {
     my_func = function (i) {
         console.log(i);
@@ -222,7 +249,7 @@ for (i = 0; i < list.length; i+= 1) {
                 </section>
 
                 <section data-background="#007777">
-                    <h2>Functions in Loops</h2>
+                    <h2>Using .each</h2>
                     <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 // Example Using .each from JQuery
 
@@ -247,7 +274,7 @@ $( "li" ).each(fnOutside);
                 </section>
 
                 <section data-background="#007777">
-                    <h2>Return Statments</h2>
+                    <h2>Return Statements</h2>
                     <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 return foo;
 //or 
@@ -569,7 +596,7 @@ function foo() { foo(); }
                     <aside class="notes">
                         <p>Closures this is sometimes called lexical scoping or static scoping</p>
                         <p>Closure comes from set theory where one thing can be closed over another thing</p>
-                        <p>This is one of the most powerful features of Javascript and where we will spend most of the day</p>
+                        <p>This is one of the most powerful features of Javascript.</p>
                     </aside>
                 </section>
 
@@ -585,6 +612,7 @@ function foo() { foo(); }
                     <aside class="notes">
                         <p>Closures this is sometimes called lexical scoping or static scoping</p>
                         <p>This is one of the most powerful features of Javascript and where we will spend most of the day</p>
+                        <p>This Concept was first introduced by Scheme, which brought in the Closure Concept for Set Theory</p>
                     </aside>
                 </section>
 
@@ -702,6 +730,99 @@ alert(digit_names(3));
                     </code></pre>
                     <aside class="notes">
                     <p>Now we just bring the names var into the closure and get the same thing</p>
+                    </aside>
+                </section>
+
+                <section data-background="#007777">
+                    <h2>Javscript Objects</h2>
+                        <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+// This is called an Object Literal
+var foo = {}; 
+
+// Creates a new object with the specified prototype
+var foo = Object.create(Object.prototype);
+                    </code></pre>
+                    <aside class="notes">
+                    <p>For the most part you will use the Object literal syntax, you will usually only see the Object.create() method when dealing with classical inheritance </p>
+                    </aside>
+                </section>
+
+
+                <section data-background="#007777">
+                    <h2>Working With Objects</h2>
+                        <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var Person = {
+    firstName: "John",
+    lastname: "Doe",
+    country : "USA",
+    age: "13"
+}; 
+
+
+                    </code></pre>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+// Dot notation this is the prefered method
+Person.firstName
+
+// Use the bracket notation when the dot notation won't work
+Person["lastname"]
+
+
+                    </code></pre>
+                    <aside class="notes">
+                    <p>When working with objects you will want use the dot notation to access properties</p>
+                    <p>Sometimes you will need to use the bracket notation to access objects.</p>
+                        <ul>
+                            <li>Name contains a space</li>
+                            <li>When the name conatins a keyword</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section data-background="#007777">
+                    <h2>Adding Properties To Objects</h2>
+                        <br>
+                    <p>Using Dot notation we can add properties to our object</p>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var Person = {};
+
+Person.firstName = "John";
+Person.lastName  = "Doe";
+
+// You can also use bracket notation for assignment
+Person["age"] = "33"
+
+
+                    </code></pre>
+                    <aside class="notes">
+
+                    </aside>
+                </section>
+
+                <section data-background="#007777">
+                    <h2>Object Literal Design Pattern</h2>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var myModule = {
+    projectName: "Super Secret",
+
+    myConfig: {
+        useCaching: true,
+        language : "en"
+    },
+
+    getName : function() {
+        console.log("Project Name: " + this.projectName)
+    },
+
+    reportMyConfig: function () {
+        console.log( "Caching is: " + ( this.myConfig.useCaching  ? "enabled" : "disabled") );
+    }
+}
+                    </code></pre>
+                    <aside class="notes">
+
                     </aside>
                 </section>
 
