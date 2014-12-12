@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Javascript Bootcamp</title>
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'css/print/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+        <style type="text/css">
+            .slides table, .slides tr, .slides td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            .reveal .slides table td{
+                padding: 25px 75px;
+                padding-right: 1.3em;
+            }
+            .slides .table-heading {
+                background-color: black;
+            }
+
+        </style>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section data-background="#007777">
+                    <h2>Welcome to Javascript Bootcamp</h2>
+                    <h3>Part Two</h3>
+                    <p><small>Created by Aaron Brooks / <a href="http://twitter.com/ra_brooks">@ra_brooks</a></small></p>
+                     <p><small>And Rob Shepherd</small></p>
+                </section>
+
+                <section data-background="#007777">
+
+                    <h2>Let's Recap</h2>
+
+                    <ul>
+                        <li>Object Literals</li>
+                        <li>Functions</li>
+                        <li>Closure</li>
+                        <li>Immediately Invoked Function Expressions</li>
+                        <li>Memoization</li>
+                    </ul>
+                </section>
+
+
+                <section data-background="#007777">
+                    <h2>Working With Objects</h2>
+                        <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var Person = {
+    firstName: "John",
+    lastname: "Doe",
+    country : "USA",
+    age: "13"
+}; 
+
+
+                    </code></pre>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+// Dot notation this is the prefered method
+Person.firstName
+
+// Use the bracket notation when the dot notation won't work
+Person["lastname"]
+
+
+                    </code></pre>
+                    <aside class="notes">
+                    <p>When working with objects you will want use the dot notation to access properties</p>
+                    <p>Sometimes you will need to use the bracket notation to access objects.</p>
+                        <ul>
+                            <li>Name contains a space</li>
+                            <li>When the name conatins a keyword</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section data-background="#007777">
+                    <h2>Adding Properties To Objects</h2>
+                        <br>
+                    <p>Using Dot notation we can add properties to our object</p>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var Person = {};
+
+Person.firstName = "John";
+Person.lastName  = "Doe";
+
+// You can also use bracket notation for assignment
+Person["age"] = "33"
+
+
+                    </code></pre>
+                    <aside class="notes">
+
+                    </aside>
+                </section>
+
+                <section data-background="#007777">
+                    <h2>Object Literal Design Pattern</h2>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var myModule = {
+    projectName: "Super Secret",
+
+    myConfig: {
+        useCaching: true,
+        language : "en"
+    },
+
+    getName : function() {
+        console.log("Project Name: " + this.projectName)
+    },
+
+    reportMyConfig: function () {
+        console.log( "Caching is: " + ( this.myConfig.useCaching  ? "enabled" : "disabled") );
+    }
+}
+                    </code></pre>
+                    <aside class="notes">
+
+                    </aside>
+                </section>
+
+                <section data-background="#007777">
+                    <h2>Method Invocation</h2>
+                        <p>A method is nothing more than a javascript function that is stored in a property of an object. </p>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+Var Foo = {
+  bar: function() {
+    var self = this;
+    console.log(this === Foo);
+    f();
+
+    function f() {
+        // now this is undefined or global depending on the EcmaScript Version
+        console.log( self === Foo);
+    }
+  },
+  baz: function() {
+
+  }
+}
+
+Foo.bar();
+                    
+                    </code></pre>
+                </section>
+
+                 <section data-background="#007777">
+                    <h2>Immediately-Invoked Function Expression (IIFE)</h2>
+                        <p></p>
+                        <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+(function(){
+    console.log('This will run auto magically');
+})();                   
+                    </code></pre>
+                    <br>
+                    <p>Here is an example of a self invoking function</p>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function foo() { foo(); }
+                    </code></pre>
+                </section>
+
+                   <section data-background="#007777">
+                    <h2>Global Namespace</h2>
+                        <p></p>
+                        <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var names = ['zero', 'one', 'two',
+'three', 'four', 'five', 'six',
+'seven', 'eight', 'nine'];
+
+var digit_name = function (n) {
+    return names[n];    
+};
+
+alert(digit_names(3)); 
+                    </code></pre>
+
+                </section>
+
+                <section data-background="#007777">
+                    <h2>Slow Solution</h2>
+                        <p></p>
+                        <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var digit_name = function (n) {
+    var names = ['zero', 'one', 'two',
+    'three', 'four', 'five', 'six',
+    'seven', 'eight', 'nine'];
+
+
+    return names[n];    
+};
+
+alert(digit_names(3)); 
+                    </code></pre>
+
+                </section>
+
+                <section data-background="#007777">
+                    <h2>Memoization</h2>
+                        <p>MOST IMPORTANT CONCEPT ALL DAY</p>
+                        <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var digit_name = (function (n) {
+    var names = ['zero', 'one', 'two',
+    'three', 'four', 'five', 'six',
+    'seven', 'eight', 'nine'];
+
+    return function(n){
+        return names[n];
+    };  
+})();
+
+alert(digit_names(3)); 
+                    </code></pre>
+
+                </section>
+
+                <section data-background="#007777">
+                    <h2>Fun with functions</h2>
+                        <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function addNumbers (x, y) {
+    return x + y;
+}
+                    </code></pre>
+                    <p>What is the difference between</p>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var sum = addNumbers;
+
+var sum = addNumbers();
+                    </code></pre>
+                </section>
+                
+                <section data-background="#007777">
+                    <h2>Passing functions around</h2>
+                        <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function addNumbers(x, y) {
+    return x + y;
+}
+
+var sum = addNumbers;
+                    </code></pre>
+                    <p>sum equals the function addNumbers not the return.</p>
+                    <br>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var sum = function(x,y) {
+    return x + y;
+}
+
+sum(3,4) 
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <p>This Function</p>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function addNumbers (x, y) {
+    return x + y;
+}
+                    </code></pre>
+                    <p>Expands Into</p>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var addNumbers;
+
+addNumbers = function(x,y) {
+    return x + y;
+}
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h1>Function Exercise</h1>
+                </section>
+
+<!-- ==========================================================================
+        PROBLEM ONE 
+     =======================================================================-->
+                <section data-background="#007777">
+                    <h3>Problem one</h3>
+                    <p>Write a function called identity that takes an argument and returns that argument</p>                   
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+
+identity(3) => 3
+
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h3>Answer One</h3>                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function identity(x) {
+    return x;
+}
+// OR
+var identity = function identity (x) {
+    return x;
+};
+
+                    </code></pre>
+                </section>
+<!-- ==========================================================================
+        PROBLEM TWO 
+     =======================================================================-->
+                <section data-background="#007777">
+                    <h3>Problem Two</h3>
+                    <p>Write two binary functions, add and mul, that take two numbers and return their sum and product</p>                  
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+add(3,4) => 7
+
+mul (3,4) => 12 
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h3>Answer Two</h3>                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function add(x, y) {
+    return (x + y);
+}
+
+function mul(x, y) {
+    return x * y;
+}
+
+                    </code></pre>
+                </section>
+<!-- ==========================================================================
+        PROBLEM THREE
+     =======================================================================-->
+                <section data-background="#007777">
+                    <h3>Problem Three</h3>
+                    <p>Write a function that takes an argument and returns a function that returns that argument</p>                  
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+idf = identityf(3);
+idf() => 3
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h3>Answer Three</h3>                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function identityf(x) {
+    return function (x) {
+        return x;
+    };
+}
+                    </code></pre>
+                </section>
+<!-- ==========================================================================
+        CHECK FOR QUESTIONS
+     =======================================================================-->
+
+                <section data-background="#007777">
+                    <h1>Make sure you understand</h1>
+                    <p>Everything is based on these concept.</p>
+                </section>
+<!-- ==========================================================================
+        PROBLEM Four
+     =======================================================================-->
+                <section data-background="#007777">
+                    <h3>Problem Four</h3>
+                    <p>Write a function that adds from two invocations</p>                  
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+addf(3)(4) => 7
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h3>Answer Four</h3>                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function addf(x) {
+    return function (y) {
+        return x + y
+    };
+}
+                    </code></pre>
+                </section>
+<!-- ==========================================================================
+        PROBLEM Five
+     =======================================================================-->
+                <section data-background="#007777">
+                    <h3>Problem Five</h3>
+                    <p>Write a function that takes a binary function, and makes it callable with two invocations.</p>                  
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+addf = applyf(add);
+addf(3)(4) => 7
+
+applyf(mul)(5)(6)  => 30
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h3>Answer Five</h3>                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function applyf(binary) {
+    return function (x) {
+        return function (y) {
+            return binary(x,y);
+        };
+    };
+}
+                    </code></pre>
+                </section>               
+<!-- ==========================================================================
+        PROBLEM Six
+     =======================================================================-->
+                <section data-background="#007777">
+                    <h3>Problem Six</h3>
+                    <p>Write a function that takes a function and an argument, and returns a function that can supply a second argument.</p>                  
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+add3 = curry(add, 3);
+add3(4)  => 7
+
+curry(mul, 5)(6);
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h3>Answer Six</h3>                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function curry(binary, x){
+    return function (y) {
+        return binary(x,y);
+    };
+}
+                    </code></pre>
+                    <aside class="notes">
+                        <p>This is sometimes called the Curry function or schonfinkelisation</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Extra Credit</h3>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function curry( func, first) {
+    return applyf(func)(first);
+}
+                </code></pre>
+                </section>
+<!-- ==========================================================================
+        PROBLEM Seven
+     =======================================================================-->
+                <section data-background="#007777">
+                    <h3>Problem Seven</h3>
+                    <p>Without writing any new function, show three ways to create the increment function</p>                  
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+inc(5)  => 6
+inc(inc(5)) => 7
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h3>Answer Seven</h3>                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+
+inc = addf(1);
+
+inc = applyf(add)(1);
+
+inc = curry(add,1);
+                    </code></pre>
+                </section>
+
+<!-- ==========================================================================
+        PROBLEM Eight
+     =======================================================================-->
+                <section data-background="#007777">
+                    <h3>Problem Eight</h3>
+                    <p>Write methodize, a function that converts a binary function to a method</p>                  
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+Number.prototype.add = methodize(add);
+(3).add(4)  => 7
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h3>Answer Eight</h3>                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function methodize (func) {
+   return function (y) {
+        return func (this, y)
+   };
+}
+                    </code></pre>
+                </section>
+<!-- ==========================================================================
+        PROBLEM Nine
+     =======================================================================-->
+                <section data-background="#007777">
+                    <h3>Problem Nine</h3>
+                    <p>Write demethodize, a function that converts a method to a binary function</p> 
+                    <br>
+                    <small> Note: you will need to use call to invoke your return function</small>                 
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+demethodize(Number.prototype.add)(5,6)  => 11
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h3>Answer Nine</h3>                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function demthodize(func) {
+    return function (that, y) {
+        return func.call(that,y);
+    };
+}
+                    </code></pre>
+                </section>
+<!-- ==========================================================================
+        PROBLEM Ten
+     =======================================================================-->
+                <section data-background="#007777">
+                    <h3>Problem Ten</h3>
+                    <p>Write a function named twice that takes a binary function and returns a unary function that passes its argument to the binary function twice.</p>                  
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+Var double = twice(add);
+double(11)  => 22
+
+var square = twice(mul);
+square(11)  => 121
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h3>Answer Ten</h3>                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function twice(binary) {
+    return function (a) {
+        return binary(a, a);
+    };
+}
+                    </code></pre>
+                </section>
+<!-- ==========================================================================
+        PROBLEM Eleven
+     =======================================================================-->
+                <section data-background="#007777">
+                    <h3>Problem Eleven</h3>
+                    <p>Write a function composeu that takes two unary functions and returns a unary function that calls both</p>                  
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+composeu(double, square)(3)  => 36
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h3>Answer Eleven</h3>                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function composeu(f, g) {
+    return function (a) {
+        return g(f(a));
+    };
+}
+                    </code></pre>
+                </section>
+<!-- ==========================================================================
+        PROBLEM Twelve
+     =======================================================================-->
+                <section data-background="#007777">
+                    <h3>Problem Twelve</h3>
+                    <p>Write a function composeb that takes two binary functions and returns a function that calls them both</p>                  
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+composeb(add, mul)(2, 3, 5)  => 25
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h3>Answer Twelve</h3>                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function comoseb(f, g) {
+    return function (a, b, c) {
+        return g(f(a, b), c);
+    };
+}
+                    </code></pre>
+                </section>
+<!-- ==========================================================================
+        PROBLEM Thirteen
+     =======================================================================-->
+                <section data-background="#007777">
+                    <h3>Problem Thirteen</h3>
+                    <p>Write a function that allows another function to only be called once</p>                  
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+add_once = once(add)
+add_once(3,4)  => 7
+add_once(3,4)  => throw!
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h3>Answer Thirteen</h3>                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function once(func) {
+    return function () {
+        var f = func;
+        func = null;
+        return f.apply(this, arguments);
+    };
+}
+                    </code></pre>
+                </section>
+
+<!-- ==========================================================================
+        PROBLEM Fourteen
+     =======================================================================-->
+                <section data-background="#007777">
+                    <h3>Problem Fourteen</h3>
+                    <p>Write a factory function that returns two functions that implement an up/down counter</p>                  
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+counter = counterf(10);
+counter.inc()  => 11;
+counter.dev()  => 10;
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h3>Answer Fourteen</h3>                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function counterf(value) {
+    return{
+        inc: function () {
+            value +=1;
+            return value;
+        },
+        dec: function () {
+            value -=1;
+            return value;
+        }
+    };
+}
+                    </code></pre>
+                </section>
+<!-- ==========================================================================
+        PROBLEM Fifteen
+     =======================================================================-->
+                <section data-background="#007777">
+                    <h3>Problem Fifteen</h3>
+                    <p>Make a revocable function that takes a nice function, and returns a revoke function that denies access to the nice function, and an invoke function that can invoke the nice function until it is revoked</p>                  
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+temp = revocable(alert);
+temp.invoke(7);  => Alert: 7
+temp.revoke();
+temp.invoke(8);  = Alert: 8
+                    </code></pre>
+                </section>
+
+                <section data-background="#007777">
+                    <h3>Answer Fifteen</h3>                
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function revocable(nice) {
+    return {
+        invoke: function () {
+            return nice.apply(this, arguments);
+        },
+        revoke: function () {
+            nice = null;
+        }
+    };
+}
+                    </code></pre>
+                </section>
+<!-- ========================================================================== 
+        END OF SLIDES 
+     =======================================================================-->
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+    </body>
+</html>

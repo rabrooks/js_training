@@ -108,16 +108,26 @@
                     <h2>var Statement Example</h2>
                 
                     <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-var myVar = 0, myOtherVar;
-//Expands into 
-    var myVar = undefined,
-        myOtherVar = undefined;
+function foo() {
+    console.log(myVar);
 
-    myVar = 0;                      
+    var myVar = 0 , myOtherVar;
+}                    
+                    </code></pre>
+                    <br>
+                    <p>Expands into</p>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function foo() {
+    var myVar = undefined;
+    var myOtherVar = undefined;
+
+    console.log(myVar);
+
+    myVar = 0
+}                    
                     </code></pre>
                     <aside class="notes">
                         <p>This is important to understand, alot of the confussion around javascript is because of hoisting</p>
-
                     </aside>
                 </section>
 
@@ -127,14 +137,37 @@ var myVar = 0, myOtherVar;
                         <li>Produces an instance of a function object</li>
                         <li>These function objects are first class</li>
                         <li>Function objects inhert from Function.prototype</li>
+                        <li>Name of the function is optional</li>
                     </ul>
 
                     <aside class="notes">
-                        <p>Two important things on this slide Function expression are different from function Statements</p>
+                        <p>Two important things on this slide Function expression are different from function declarations</p>
                         <p>Functions are object, and these objects are first class citizens in javascript land</p>
                         <p>Does everyone know what first class means?</p>
                         <p>You can pass them as arguments, return them from functions, assign them to variables, store in an array or hash ( which is a javascript object )</p>
                         <p>In javascript functions have methods and these methods can be inherited via Function.prototype</p>
+                    </aside>
+                </section>
+
+                <section data-background="#007777">
+                    <h2>Function Statement</h2>
+                    <ul>
+                        <li>The function statement is a short-hand for a var statement with a function value.</li>
+                        <li>The assignment of the function is also hoisted.</li>
+                    </ul>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function foo() {}
+
+// Expands into 
+var foo = function foo() {};
+
+// Which further expands to 
+var foo = undefined;
+foo = function foo () {};
+
+                    </code></pre>
+                    <aside class="notes">
+
                     </aside>
                 </section>
 
@@ -160,7 +193,15 @@ var foo = function() {
                     <p>Like Variable hosting function Statements get hoisted as well, making them behave differently than expected</p>
                     <p>We usually use function expression because they are easier to reason about. For example you cannont use Function Statements in if blocks, because they get hoisted to the top of the function</p>
     
-                    <p>Now most browser will support this, but since the language definition does't they all support it differntly </p>
+                    <p>Now most browser will support function statments in if blocks, but since the language definition doesn't,  they all support it differently. </p>
+
+                    <p>function declarations loads before any code is executed.<p>
+
+                    <p>While function expressions loads only when the interpreter reaches that line of code.</p>
+
+                    <p>So if you try to call a function expression before it's loaded, you'll get an error</p>
+
+                    <p>But if you call a function declaration, it'll always work. Because no code can be called until all declarations are loaded.</p>
 
                     </aside>
                 </section>
@@ -287,7 +328,7 @@ return;
 
                     </ul>
                     <aside class="notes">
-                        <p>Unlike other C syntax languages that have block scope, you should declare all variables at the top of the function</p>
+
                     </aside>
                 </section>
 
@@ -297,11 +338,9 @@ return;
                     <ul>
                         <li>Arguments</li>
                         <li>this</li>
-
                     </ul>
                     
                     <aside class="notes">
-
                     </aside>
                 </section>
 
@@ -314,7 +353,6 @@ return;
                         <li>It is an array-like object. </li>
                         <li>Arguments.length is the number of arguments passed.</li>
                         <li>Rule of thumb treat this as a read only structure</li>
-
                     </ul>
                     
                     <aside class="notes">
@@ -355,6 +393,7 @@ var ten = sum(1, 2, 3, 4);
 
                     <aside class="notes">
                         <p>If the this parameter does not make sense right now, it will once we start working with methods and inheritance</p>
+                        <p>For now just think of this as the current object you are working with</p>
                     </aside>
                 </section>
 
@@ -398,8 +437,7 @@ logProps({x:1});
                     </code></pre>
 
                     <aside class="notes">
-                        <p></p>
-                        
+                        <p>Notice how we pass the object {x:1} into the prop parameter</p>
                     </aside>
                     
                 </section>
@@ -422,6 +460,7 @@ function foo() {
 
                         <aside class="notes">
                            <p>An inner function does not get access to the outer this. var that = this;</p>
+                           <p>That is probably not the best name unfortunately it has became a javascript convention that you will see</p>
                         </aside>
                     </section>
 
@@ -451,7 +490,7 @@ Foo.bar();
                     </code></pre>
 
                     <aside class="notes">
-                        <p>The way we call functions, will determine what happens to the this parameter</p>
+                        
                     </aside>
                 </section>
 
@@ -528,10 +567,8 @@ bar.apply(foo, [1,2]);
                         </table> 
                      
                     <aside class="notes">
-                        <p>Here we are calling the function object bar and setting the <em>this</em>
-                           value to be the foo object</p>
                         <p>This is a little advanced and we will cover this later. I just want
-                            you to be aware that this exist in case you see it.</p>
+                            you to be aware that this exist and some basic use cases.</p>
                     </aside>
                 </section>
 
@@ -611,7 +648,7 @@ function foo() { foo(); }
                     
                     <aside class="notes">
                         <p>Closures this is sometimes called lexical scoping or static scoping</p>
-                        <p>This is one of the most powerful features of Javascript and where we will spend most of the day</p>
+                        <p>This is one of the most powerful features of Javascript</p>
                         <p>This Concept was first introduced by Scheme, which brought in the Closure Concept for Set Theory</p>
                     </aside>
                 </section>
@@ -632,7 +669,7 @@ var digit_name = function (n) {
 alert(digit_names(3)); 
                     </code></pre>
                     <aside class="notes">
-                        <p>The problem with this is that names is in the gloabl namespace</p>
+                        <p>The problem with this example is that names is in the gloabl namespace</p>
                     </aside>
                 </section>
 
